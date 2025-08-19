@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProjetoFInalApi.Models;
-using ProjetoFInalApi.Models.Enuns;
-using ProjetoFInalApi.Data;
+using FlowyAPI.Models;
+using FlowyAPI.Models.Enuns;
+using FlowyAPI.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace ProjetoFInalApi.Controllers
+namespace FlowyAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

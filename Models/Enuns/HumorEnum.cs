@@ -1,4 +1,4 @@
-namespace ProjetoFInalApi.Models.Enuns
+namespace FlowyAPI.Models.Enuns
 {
     public enum HumorEnum
     {
