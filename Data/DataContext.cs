@@ -43,6 +43,7 @@ namespace FlowyAPI.Data
                     contPagina = "teste 123 123 teste de novo",
                     Humor = HumorEnum.FELIZ,
                     qtdCaracteresPagina = 123,
+                    UsuarioId = 1,
                 }
             );
 

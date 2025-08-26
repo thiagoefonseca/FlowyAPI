@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProjetoFInalApi.Data;
+using FlowyAPI.Data;
 
 #nullable disable
 
-namespace ProjetoFInal.Migrations
+namespace FlowyAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20250619003911_InitialCreate")]
@@ -25,7 +25,7 @@ namespace ProjetoFInal.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ProjetoFInalApi.Models.Pagina", b =>
+            modelBuilder.Entity("FlowyAPI.Models.Pagina", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

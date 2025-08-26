@@ -12,7 +12,7 @@ namespace FlowyAPI.Models
         public int Id { get; set; }
         public string Username { get; set; } = string.Empty;
         public byte[]? PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+        public byte[]? PasswordSalt { get; set; }
         public DateTime? DataAcesso { get; set; }
 
         [NotMapped]
@@ -20,5 +20,8 @@ namespace FlowyAPI.Models
         public List<Pagina> Paginas { get; set; } = new List<Pagina>();
         public string? Perfil { get; set; }
         public string? Email { get; set; }
+
+        [NotMapped]
+        public string Token { get; set; } = string.Empty;
     }
 }

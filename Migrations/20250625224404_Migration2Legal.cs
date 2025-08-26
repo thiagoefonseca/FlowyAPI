@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ProjetoFInal.Migrations
+namespace FlowyAPI.Migrations
 {
     /// <inheritdoc />
     public partial class Migration2Legal : Migration

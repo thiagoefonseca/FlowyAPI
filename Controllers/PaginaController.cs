@@ -2,14 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using FlowyAPI.Models;
 using FlowyAPI.Models.Enuns;
 using FlowyAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using FlowyAPI.Extensions;
 
 namespace FlowyAPI.Controllers
 {
+//  [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class PaginaController : ControllerBase
@@ -51,6 +54,44 @@ namespace FlowyAPI.Controllers
             }
         }
 
+        [HttpGet("GetByUser")]
+        public async Task<IActionResult> GetByUserAsync()
+        {
+            try
+            {
+                int id = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+
+                List<Pagina> lista = await _context.TB_PAGINAS
+                    .Where(u => u.UsuarioId == id).ToListAsync();
+
+                return Ok(lista);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetByPerfil")]
+        public async Task<IActionResult> GetByPerfilAsync()
+        {
+            try
+            {
+                List<Pagina> lista = new List<Pagina>();
+
+                if (User.UsuarioPerfil() == "Admin")
+                    lista = await _context.TB_PAGINAS.ToListAsync();
+                else
+                    lista = await _context.TB_PAGINAS
+                            .Where(p => p.Usuario.Id == User.UsuarioId()).ToListAsync();
+                return Ok(lista);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message + " - " + ex.InnerException);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(Pagina novaPagina)
         {
@@ -64,6 +105,9 @@ namespace FlowyAPI.Controllers
                 {
                     throw new Exception("Você não tem humor não!?");
                 }
+
+                novaPagina.Usuario = await _context.TB_USUARIOS.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
+
                 novaPagina.qtdCaracteresPagina = novaPagina.contPagina.Length;
                 novaPagina.dtCriacaoPagina = DateTime.Now;
                 await _context.TB_PAGINAS.AddAsync(novaPagina);
@@ -90,6 +134,9 @@ namespace FlowyAPI.Controllers
                 {
                     throw new Exception("Você não tem humor não!?");
                 }
+
+                novaPagina.Usuario = await _context.TB_USUARIOS.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
+
                 _context.TB_PAGINAS.Update(novaPagina);
                 novaPagina.qtdCaracteresPagina = novaPagina.contPagina.Length;
                 novaPagina.dtModificacaoPagina = DateTime.Now;
