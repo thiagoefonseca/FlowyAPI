@@ -337,3 +337,7 @@ D:\thiago 3ds\FlowyApi2DS\FlowyAPI\obj\Debug\net9.0\staticwebassets.build.endpoi
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\obj\Debug\net9.0\ProjetoF.55FCD5B4.Up2Date
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\obj\Debug\net9.0\ProjetoFInal.genruntimeconfig.cache
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\obj\Debug\net9.0\ref\ProjetoFInal.dll
+D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\Newtonsoft.Json.dll
+D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll

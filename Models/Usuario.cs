@@ -14,10 +14,12 @@ namespace FlowyAPI.Models
         public byte[]? PasswordHash { get; set; }
         public byte[]? PasswordSalt { get; set; }
         public DateTime? DataAcesso { get; set; }
+        public int codDiarioUsuario { get; set; }
 
         [NotMapped]
-        public string PasswordString { get; set; }
+        public string PasswordString { get; set; } = string.Empty;
         public List<Pagina> Paginas { get; set; } = new List<Pagina>();
+        public List<Exercicio> Exercicios { get; set; } = new List<Exercicio>();
         public string? Perfil { get; set; }
         public string? Email { get; set; }
 

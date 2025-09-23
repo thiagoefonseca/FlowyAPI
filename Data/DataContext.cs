@@ -18,13 +18,15 @@ namespace FlowyAPI.Data
 
         }
 
-        public DbSet<Pagina> TB_PAGINAS { get; set; }
-        public DbSet<Usuario> TB_USUARIOS { get; set; }
+        public DbSet<Pagina> tbl_pagina { get; set; }
+        public DbSet<Usuario> tbl_usuario { get; set; }
+        public DbSet<Exercicio> tbl_exercicios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pagina>().ToTable("TB_PAGINAS");
-            modelBuilder.Entity<Usuario>().ToTable("TB_USUARIOS");
+            modelBuilder.Entity<Pagina>().ToTable("tbl_pagina");
+            modelBuilder.Entity<Usuario>().ToTable("tbl_usuario");
+            modelBuilder.Entity<Exercicio>().ToTable("tbl_exercicios");
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.Paginas)
@@ -47,6 +49,20 @@ namespace FlowyAPI.Data
                 }
             );
 
+            modelBuilder.Entity<Exercicio>().HasData(
+                new Exercicio()
+                {
+                    Id = 1,
+                    atividade = "Respiração",
+                    descricao = "Eu adoro respirar",
+                    relogio = 5,
+                    dataTermino = DateTime.Now.AddMinutes(5),
+                    tempo = DateTime.Now.AddMinutes(5) - DateTime.Now,
+                    quantidade = 1,
+                    UsuarioId = 1,
+                }
+            );
+
             Usuario user = new Usuario();
             Criptografia.CriarPasswordHash("123456", out byte[] hash, out byte[] salt);
             user.Id = 1;
@@ -64,7 +80,7 @@ namespace FlowyAPI.Data
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
-            configurationBuilder.Properties<string>().HaveColumnType("varchar").HaveMaxLength(200);
+            configurationBuilder.Properties<string>().HaveColumnType("varchar").HaveMaxLength(1500);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

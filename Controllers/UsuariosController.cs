@@ -31,7 +31,7 @@ namespace FlowyAPI.Controllers
 
         private async Task<bool> UsuarioExistente(string username)
         {
-            if (await _context.TB_USUARIOS.AnyAsync(x => x.Username.ToLower() == username.ToLower()))
+            if (await _context.tbl_usuario.AnyAsync(x => x.Username.ToLower() == username.ToLower()))
             {
                 return true;
             }
@@ -50,7 +50,7 @@ namespace FlowyAPI.Controllers
                 user.PasswordString = string.Empty;
                 user.PasswordHash = hash;
                 user.PasswordSalt = salt;
-                await _context.TB_USUARIOS.AddAsync(user);
+                await _context.tbl_usuario.AddAsync(user);
                 await _context.SaveChangesAsync();
 
                 return Ok(user.Id);
@@ -67,7 +67,7 @@ namespace FlowyAPI.Controllers
         {
             try
             {
-                Usuario? usuario = await _context.TB_USUARIOS
+                Usuario? usuario = await _context.tbl_usuario
                     .FirstOrDefaultAsync(x => x.Username.ToLower().Equals(credenciais.Username.ToLower()));
 
                 if (usuario == null)
@@ -82,7 +82,7 @@ namespace FlowyAPI.Controllers
                 else
                 {
                     usuario.DataAcesso = System.DateTime.Now;
-                    _context.TB_USUARIOS.Update(usuario);
+                    _context.tbl_usuario.Update(usuario);
                     await _context.SaveChangesAsync();
 
                     usuario.PasswordHash = null;

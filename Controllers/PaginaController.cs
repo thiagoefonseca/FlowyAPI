@@ -29,7 +29,7 @@ namespace FlowyAPI.Controllers
         {
             try
             {
-                List<Pagina> lista = await _context.TB_PAGINAS.ToListAsync();
+                List<Pagina> lista = await _context.tbl_pagina.ToListAsync();
                 return Ok(lista);
             }
             catch (System.Exception ex)
@@ -43,7 +43,7 @@ namespace FlowyAPI.Controllers
         {
             try
             {
-                Pagina p = await _context.TB_PAGINAS
+                Pagina p = await _context.tbl_pagina
                     .FirstOrDefaultAsync(pBusca => pBusca.Id == id);
 
                 return Ok(p);
@@ -61,7 +61,7 @@ namespace FlowyAPI.Controllers
             {
                 int id = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
 
-                List<Pagina> lista = await _context.TB_PAGINAS
+                List<Pagina> lista = await _context.tbl_pagina
                     .Where(u => u.UsuarioId == id).ToListAsync();
 
                 return Ok(lista);
@@ -80,9 +80,9 @@ namespace FlowyAPI.Controllers
                 List<Pagina> lista = new List<Pagina>();
 
                 if (User.UsuarioPerfil() == "Admin")
-                    lista = await _context.TB_PAGINAS.ToListAsync();
+                    lista = await _context.tbl_pagina.ToListAsync();
                 else
-                    lista = await _context.TB_PAGINAS
+                    lista = await _context.tbl_pagina
                             .Where(p => p.Usuario.Id == User.UsuarioId()).ToListAsync();
                 return Ok(lista);
             }
@@ -106,11 +106,12 @@ namespace FlowyAPI.Controllers
                     throw new Exception("Você não tem humor não!?");
                 }
 
-                novaPagina.Usuario = await _context.TB_USUARIOS.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
+                novaPagina.Usuario = await _context.tbl_usuario.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
 
+                novaPagina.codDiario = novaPagina.Usuario.codDiarioUsuario;
                 novaPagina.qtdCaracteresPagina = novaPagina.contPagina.Length;
                 novaPagina.dtCriacaoPagina = DateTime.Now;
-                await _context.TB_PAGINAS.AddAsync(novaPagina);
+                await _context.tbl_pagina.AddAsync(novaPagina);
                 await _context.SaveChangesAsync();
 
                 return Ok(novaPagina.Id);
@@ -135,9 +136,9 @@ namespace FlowyAPI.Controllers
                     throw new Exception("Você não tem humor não!?");
                 }
 
-                novaPagina.Usuario = await _context.TB_USUARIOS.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
+                novaPagina.Usuario = await _context.tbl_usuario.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
 
-                _context.TB_PAGINAS.Update(novaPagina);
+                _context.tbl_pagina.Update(novaPagina);
                 novaPagina.qtdCaracteresPagina = novaPagina.contPagina.Length;
                 novaPagina.dtModificacaoPagina = DateTime.Now;
                 int linhasAfetadas = await _context.SaveChangesAsync();
@@ -155,9 +156,9 @@ namespace FlowyAPI.Controllers
         {
             try
             {
-                Pagina pRemover = await _context.TB_PAGINAS.FirstOrDefaultAsync(p => p.Id == id);
+                Pagina pRemover = await _context.tbl_pagina.FirstOrDefaultAsync(p => p.Id == id);
 
-                _context.TB_PAGINAS.Remove(pRemover);
+                _context.tbl_pagina.Remove(pRemover);
                 int linhasAfetadas = await _context.SaveChangesAsync();
                 pRemover.dtExclusaoPagina = DateTime.Now;
                 return Ok(linhasAfetadas);
