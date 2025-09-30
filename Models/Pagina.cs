@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using FlowyAPI.Models;
@@ -20,6 +21,8 @@ namespace FlowyAPI.Models
         public DateTime dtExclusaoPagina { get; set; }
         public DateTime dtModificacaoPagina { get; set; }
         public int? UsuarioId { get; set; }
+
+        [NotMapped]
         public Usuario? Usuario { get; set; }
        
     }

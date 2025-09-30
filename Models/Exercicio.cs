@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
@@ -16,6 +17,8 @@ namespace FlowyAPI.Models
         public int quantidade { get; set; }
         public double relogio { get; set; }
         public int UsuarioId { get; set; }
+
+        [NotMapped]
         public Usuario? Usuario { get; set; }
     }
 }

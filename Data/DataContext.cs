@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using FlowyAPI.Models;
 using FlowyAPI.Models.Enuns;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using FlowyAPI.Models;
 using FlowyAPI.Utils;
 
 namespace FlowyAPI.Data

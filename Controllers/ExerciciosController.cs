@@ -80,7 +80,7 @@ namespace FlowyAPI.Controllers
                 {
                     throw new Exception("Exercicio precisa ter uma atividade!");
                 }
-                else if (novoExercicio.dataTermino == DateTime.Now || novoExercicio.dataTermino == DateTime.MinValue)
+                else if (novoExercicio.relogio <= 0)
                 {
                     throw new Exception("Você precisa digitar um tempo!");
                 }
@@ -91,7 +91,7 @@ namespace FlowyAPI.Controllers
 
                 novoExercicio.Usuario = await _context.tbl_usuario.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
 
-                novoExercicio.dataTermino = DateTime.Now.AddMinutes(novoExercicio.relogio);
+                novoExercicio.dataTermino = DateTime.Now.AddMinutes(novoExercicio.relogio * novoExercicio.quantidade);
                 novoExercicio.tempo = novoExercicio.dataTermino - DateTime.Now;
                 await _context.tbl_exercicios.AddAsync(novoExercicio);
                 await _context.SaveChangesAsync();
@@ -113,7 +113,7 @@ namespace FlowyAPI.Controllers
                 {
                     throw new Exception("Exercicio precisa ter uma atividade!");
                 }
-                else if (novoExercicio.dataTermino == DateTime.Now || novoExercicio.dataTermino == DateTime.MinValue)
+                else if (novoExercicio.relogio <= 0)
                 {
                     throw new Exception("Você precisa digitar um tempo!");
                 }
