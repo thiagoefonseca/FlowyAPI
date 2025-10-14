@@ -20,12 +20,17 @@ namespace FlowyAPI.Data
         public DbSet<Pagina> tbl_pagina { get; set; }
         public DbSet<Usuario> tbl_usuario { get; set; }
         public DbSet<Exercicio> tbl_exercicios { get; set; }
+        public DbSet<Quest> tbl_quest { get; set; }
+        public DbSet<Perfil> tbl_perfil { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pagina>().ToTable("tbl_pagina");
             modelBuilder.Entity<Usuario>().ToTable("tbl_usuario");
             modelBuilder.Entity<Exercicio>().ToTable("tbl_exercicios");
+            modelBuilder.Entity<Quest>().ToTable("tbl_quest");
+            modelBuilder.Entity<Perfil>().ToTable("tbl_perfil");
+            modelBuilder.Entity<Nivel>().ToTable("tbl_nivel");
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.Paginas)
@@ -69,12 +74,12 @@ namespace FlowyAPI.Data
             user.PasswordString = string.Empty;
             user.PasswordHash = hash;
             user.PasswordSalt = salt;
-            user.Perfil = "Admin";
-            user.Email = "thiagoefonseca2007@gmail.com";
+            user.idPerfil = 1;
+            user.Email = "seuemail@email.com";
 
             modelBuilder.Entity<Usuario>().HasData(user);
 
-            modelBuilder.Entity<Usuario>().Property(u => u.Perfil).HasDefaultValue("Utilizador");
+            //modelBuilder.Entity<Usuario>().Property(u => u.Perfil).HasDefaultValue("Utilizador");
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)

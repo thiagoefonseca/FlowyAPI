@@ -13,6 +13,7 @@ using FlowyAPI.Data;
 using FlowyAPI.Models;
 using FlowyAPI.Utils;
 using Microsoft.AspNetCore.Authorization;
+using Azure.Identity;
 
 namespace FlowyAPI.Controllers
 {
@@ -50,7 +51,14 @@ namespace FlowyAPI.Controllers
                 user.PasswordString = string.Empty;
                 user.PasswordHash = hash;
                 user.PasswordSalt = salt;
+
+                user.Perfil.nomePerfil = user.Username;
+                user.Perfil.Usuario = user;
+                user.Perfil.IdUsuario = user.Id;
+                user.Perfil.IdNivel = await _context.tbl_nivel.AnyAsync(n => n.idPerfil == user.Perfil.Id);
+
                 await _context.tbl_usuario.AddAsync(user);
+                await _context.tbl_perfil.AddAsync(user.Perfil);
                 await _context.SaveChangesAsync();
 
                 return Ok(user.Id);
@@ -103,7 +111,7 @@ namespace FlowyAPI.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
                 new Claim(ClaimTypes.Name, usuario.Username),
-                new Claim(ClaimTypes.Role, usuario.Perfil)
+                //new Claim(ClaimTypes.Role, usuario.Perfil)
             };
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8
             .GetBytes(_configuration.GetSection("ConfiguracaoToken:Chave").Value));
