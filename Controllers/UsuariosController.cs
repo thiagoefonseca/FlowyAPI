@@ -52,13 +52,10 @@ namespace FlowyAPI.Controllers
                 user.PasswordHash = hash;
                 user.PasswordSalt = salt;
 
-                user.Perfil.nomePerfil = user.Username;
-                user.Perfil.Usuario = user;
-                user.Perfil.IdUsuario = user.Id;
-                user.Perfil.IdNivel = await _context.tbl_nivel.AnyAsync(n => n.idPerfil == user.Perfil.Id);
+                user.codDiarioUsuario = await _context.tbl_usuario.CountAsync<Usuario>() + 1;
+                user.idPerfil = await _context.tbl_usuario.CountAsync<Usuario>() + 1;
 
                 await _context.tbl_usuario.AddAsync(user);
-                await _context.tbl_perfil.AddAsync(user.Perfil);
                 await _context.SaveChangesAsync();
 
                 return Ok(user.Id);

@@ -21,6 +21,8 @@ namespace FlowyAPI.Models
         public string PasswordString { get; set; } = string.Empty;
         public List<Pagina> Paginas { get; set; } = new List<Pagina>();
         public List<Exercicio> Exercicios { get; set; } = new List<Exercicio>();
+
+        [NotMapped]
         public Perfil? Perfil { get; set; }
         public string? Email { get; set; }
 

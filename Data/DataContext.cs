@@ -22,6 +22,7 @@ namespace FlowyAPI.Data
         public DbSet<Exercicio> tbl_exercicios { get; set; }
         public DbSet<Quest> tbl_quest { get; set; }
         public DbSet<Perfil> tbl_perfil { get; set; }
+        public DbSet<Nivel> tbl_nivel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -78,6 +79,18 @@ namespace FlowyAPI.Data
             user.Email = "seuemail@email.com";
 
             modelBuilder.Entity<Usuario>().HasData(user);
+
+            modelBuilder.Entity<Perfil>().HasData(
+                new Perfil()
+                {
+                    Id = 1,
+                    nomePerfil = "TesteDaSilva",
+                    infoPerfil = "Perfil de teste",
+                    IdNivel = 1,
+                    IdUsuario = 1,
+                    IdQuest = 1
+                }
+            );
 
             //modelBuilder.Entity<Usuario>().Property(u => u.Perfil).HasDefaultValue("Utilizador");
         }
