@@ -178,13 +178,7 @@ D:\thiago 3ds\FlowyApi2DS\FlowyAPI\obj\Debug\net9.0\ProjetoFInal.dll
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\obj\Debug\net9.0\refint\ProjetoFInal.dll
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\obj\Debug\net9.0\ProjetoFInal.pdb
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\appsettings.Development.json
-D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\publish\web.config
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\appsettings.json
-D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\publish\appsettings.Development.json
-D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\publish\appsettings.json
-D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\publish\ProjetoFInal.deps.json
-D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\publish\ProjetoFInal.runtimeconfig.json
-D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\publish\ProjetoFInal.staticwebassets.endpoints.json
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\ProjetoFInal.staticwebassets.endpoints.json
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\ProjetoFInal.exe
 D:\thiago 3ds\FlowyApi2DS\FlowyAPI\bin\Debug\net9.0\ProjetoFInal.deps.json
