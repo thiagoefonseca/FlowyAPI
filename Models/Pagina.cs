@@ -20,7 +20,7 @@ namespace FlowyAPI.Models
         public DateTime dtCriacaoPagina { get; set; }
         public DateTime dtExclusaoPagina { get; set; }
         public DateTime dtModificacaoPagina { get; set; }
-        public int? UsuarioId { get; set; }
+        public int UsuarioId { get; set; }
 
         [NotMapped]
         public Usuario? Usuario { get; set; }

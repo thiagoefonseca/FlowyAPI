@@ -76,6 +76,7 @@ namespace FlowyAPI.Data
             user.PasswordHash = hash;
             user.PasswordSalt = salt;
             user.idPerfil = 1;
+            user.codDiarioUsuario = 1;
             user.Email = "seuemail@email.com";
 
             modelBuilder.Entity<Usuario>().HasData(user);

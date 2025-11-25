@@ -108,7 +108,6 @@ namespace FlowyAPI.Controllers
 
                 novaPagina.Usuario = await _context.tbl_usuario.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
 
-                novaPagina.codDiario = novaPagina.Usuario.codDiarioUsuario;
                 novaPagina.qtdCaracteresPagina = novaPagina.contPagina.Length;
                 novaPagina.dtCriacaoPagina = DateTime.Now;
                 await _context.tbl_pagina.AddAsync(novaPagina);
@@ -138,6 +137,7 @@ namespace FlowyAPI.Controllers
 
                 novaPagina.Usuario = await _context.tbl_usuario.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
 
+                novaPagina.codDiario = novaPagina.UsuarioId;
                 _context.tbl_pagina.Update(novaPagina);
                 novaPagina.qtdCaracteresPagina = novaPagina.contPagina.Length;
                 novaPagina.dtModificacaoPagina = DateTime.Now;
