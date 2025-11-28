@@ -39,6 +39,11 @@ namespace FlowyAPI.Data
                 .HasForeignKey(e => e.UsuarioId)
                 .IsRequired(false);
 
+            modelBuilder.Entity<Usuario>()
+                .HasOne(e => e.Perfil)
+                .WithOne(e => e.Usuario)
+                .HasForeignKey<Perfil>(p => p.UsuarioId); 
+
             modelBuilder.Entity<Pagina>().HasData(
                 new Pagina()
                 {
@@ -51,6 +56,18 @@ namespace FlowyAPI.Data
                     Humor = HumorEnum.FELIZ,
                     qtdCaracteresPagina = 123,
                     UsuarioId = 1,
+                }
+            );
+
+            modelBuilder.Entity<Perfil>().HasData(
+                new Perfil()
+                {
+                    Id = 1,
+                    infoPerfil = "Perfil de Teste",
+                    nomePerfil = "UsuarioAdmin",
+                    IdNivel = 1,
+                    UsuarioId = 1,
+                    IdQuest = 1
                 }
             );
 
@@ -81,18 +98,7 @@ namespace FlowyAPI.Data
 
             modelBuilder.Entity<Usuario>().HasData(user);
 
-            modelBuilder.Entity<Perfil>().HasData(
-                new Perfil()
-                {
-                    Id = 1,
-                    nomePerfil = "TesteDaSilva",
-                    infoPerfil = "Perfil de teste",
-                    IdNivel = 1,
-                    IdUsuario = 1,
-                    IdQuest = 1
-                }
-            );
-
+    
             //modelBuilder.Entity<Usuario>().Property(u => u.Perfil).HasDefaultValue("Utilizador");
         }
 

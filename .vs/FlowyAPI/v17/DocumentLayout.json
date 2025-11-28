@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\thiago 3ds\\FlowyApi2DS\\FlowyAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D1AC8C08-ECD8-98D3-FC5A-C05C081C9354}|ProjetoFInal.csproj|d:\\thiago 3ds\\flowyapi2ds\\flowyapi\\controllers\\perfilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1AC8C08-ECD8-98D3-FC5A-C05C081C9354}|ProjetoFInal.csproj|solutionrelative:controllers\\perfilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D1AC8C08-ECD8-98D3-FC5A-C05C081C9354}|ProjetoFInal.csproj|d:\\thiago 3ds\\flowyapi2ds\\flowyapi\\controllers\\questscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D1AC8C08-ECD8-98D3-FC5A-C05C081C9354}|ProjetoFInal.csproj|solutionrelative:controllers\\questscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +23,23 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PerfilController.cs",
+              "DocumentMoniker": "D:\\thiago 3ds\\FlowyApi2DS\\FlowyAPI\\Controllers\\PerfilController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PerfilController.cs",
+              "ToolTip": "D:\\thiago 3ds\\FlowyApi2DS\\FlowyAPI\\Controllers\\PerfilController.cs",
+              "RelativeToolTip": "Controllers\\PerfilController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T22:19:55.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "QuestsController.cs",
               "DocumentMoniker": "D:\\thiago 3ds\\FlowyApi2DS\\FlowyAPI\\Controllers\\QuestsController.cs",
               "RelativeDocumentMoniker": "Controllers\\QuestsController.cs",
