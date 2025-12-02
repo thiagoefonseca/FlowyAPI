@@ -59,6 +59,16 @@ namespace FlowyAPI.Data
                 }
             );
 
+            modelBuilder.Entity<Nivel>().HasData(
+                new Nivel()
+                {
+                    Id = 1,
+                    nivelUsuario = 1,
+                    qtdXp = 0,
+                    idPerfil = 1
+                }
+            );
+
             modelBuilder.Entity<Perfil>().HasData(
                 new Perfil()
                 {

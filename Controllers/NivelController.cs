@@ -13,11 +13,11 @@ namespace FlowyAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PerfilController : ControllerBase
+    public class NivelController : ControllerBase
     {
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
-        public PerfilController(DataContext context, IConfiguration configuration)
+        public NivelController(DataContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -29,7 +29,7 @@ namespace FlowyAPI.Controllers
         {
             try
             {
-                List<Perfil> lista = await _context.tbl_perfil.ToListAsync();
+                List<Nivel> lista = await _context.tbl_nivel.ToListAsync();
                 return Ok(lista);
             }
             catch (System.Exception ex)
@@ -72,31 +72,26 @@ namespace FlowyAPI.Controllers
             }
         }
         
-        [HttpPost("Registrar")]
-        public async Task<IActionResult> Add(Perfil novoPerfil)
+        [HttpPost]
+        public async Task<IActionResult> Add(Nivel novoNivel)
         {
             try
             {
-                if (string.IsNullOrEmpty(novoPerfil.nomePerfil))
-                    throw new System.Exception("Perfil precisa ter um nome");
+                if (novoNivel.idPerfil == 0)
+                    throw new System.Exception("Nivel precisa ser atrelado a um perfil");
 
-                novoPerfil.Usuario = await _context.tbl_usuario.FirstOrDefaultAsync(uBusca => uBusca.Id == User.UsuarioId());
+                //novoNivel.Perfil = await _context.tbl_perfil.FirstOrDefaultAsync(uBusca => uBusca.Id == User.idPerfil());
 
-
-                novoPerfil.UsuarioId = await _context.tbl_usuario.CountAsync<Usuario>();
-                novoPerfil.IdNivel = novoPerfil.UsuarioId;
-
-                await _context.tbl_perfil.AddAsync(novoPerfil);
+                await _context.tbl_nivel.AddAsync(novoNivel);
                 await _context.SaveChangesAsync();
 
-                return Ok(novoPerfil.Id);
+                return Ok(novoNivel.Id);
             }
             catch (System.Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-
         
     }
 }

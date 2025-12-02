@@ -13,7 +13,7 @@ namespace FlowyAPI.Models
         public string nomePerfil { get; set; } = string.Empty;
         public int IdNivel { get; set; }
         public int UsuarioId { get; set; }
-        public int IdQuest { get; set; }
+        public int? IdQuest { get; set; }
 
         [NotMapped]
         public Usuario? Usuario { get; set; }

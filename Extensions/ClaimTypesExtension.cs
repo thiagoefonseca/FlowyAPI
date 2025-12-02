@@ -21,6 +21,19 @@ namespace FlowyAPI.Extensions
             }
         }
 
+        public static int idPerfil(this ClaimsPrincipal user)
+        {
+            try
+            {
+                var idPerfil = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+                return int.Parse(idPerfil);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public static string UsuarioPerfil(this ClaimsPrincipal user)
         {
             try
